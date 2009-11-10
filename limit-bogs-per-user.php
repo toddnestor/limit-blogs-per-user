@@ -1,10 +1,10 @@
 <?php
 /*
-Plugin Name:Limit Blogs per User
+Plugin name:Limit Blogs per User
 Plugin Author:Brajesh K. Singh
 Plugin URI:http://www.thinkinginwordpress.com/2009/03/limit-number-of-blogs-per-user-for-wordpress-mu-and-buddypress-websiteblog-network/
 Author URI:http://ThinkingInWordpress.com
-Version:1.1.1
+Version:1.0
 */
 
 add_filter("wpmu_active_signup","tiw_check_current_users_blog"); //send fake/true enable or disabled request
@@ -15,31 +15,17 @@ add_action("update_wpmu_options","tiw_save_num_allowed_blogs");//action to save 
 
 function tiw_check_current_users_blog($active_signup)
 {
-global $wpdb;
-	if( !is_user_logged_in()||is_site_admin() )
-	return $active_signup;//if the user is not logged in or, is site admin,do not change the site policies
+	if( !is_user_logged_in() )
+	return $active_signup;//if the user is not logged in,do not change the site policies
 
-	
-	//now let us check for the subscribes for root blog/othe blog,if they create new blog ,they should be removed from the main blog and assigned as admin to the new blog
-	
-	
+	//otherwise...
 	global $current_user;
-	$number_of_blogs_per_user=tiw_num_allowed_blogs();//find 
-	if(!$number_of_blogs_per_user)
-	return $active_signup;//do not change policy the plugin is not used as limit can be set zero directly from wpmu option disallowing the blog creation
-	//find all blogs for the current user
 	$blogs=get_blogs_of_user($current_user->ID);//get all blogs of user
-	$count=count($blogs);//let us count it
 	
-foreach($blogs as $key => $blog){
-	$cap_key = $wpdb->base_prefix . $blog->userblog_id . '_capabilities';
-
-if (  (is_array($current_user->$cap_key) && in_array('subscriber', $current_user->$cap_key)) )
-$count--;//decrement the count if the user is a subscriber of any blog
-}
+	$number_of_blogs_per_user=tiw_num_allowed_blogs();//find 
 	
 	//if number of allowed blog is greater than 0 and current user owns less number of blogs */
-	if($number_of_blogs_per_user>0&&$count<$number_of_blogs_per_user)
+	if($number_of_blogs_per_user>0&&count($blogs)<$number_of_blogs_per_user)
 			return $active_signup;
 	else
 	return "none";
