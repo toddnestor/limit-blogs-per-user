@@ -3,7 +3,7 @@ Contributors: write2brajesh
 Tags: buddypress,wpmu, options,limit blogs,user,limit
 Requires at least: 2.5+
 Tested up to: 2.8.5.2
-Stable tag: 1.1.1
+Stable tag: 1.0
 
 This plugin is for wpmu(wordpress Mu) and/or wpmu+buddypress based social network.It limits the number of blogs a user can create.
 == Description ==
