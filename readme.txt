@@ -44,7 +44,7 @@ Please visit
 = Version 1.2 =
 *Siteadmin restriction fixed,now site admin sees only the site policy
  *Subscribers can creates new blog,the blog of which they are subscriber/contributor/author/editor is not counted.
- * Only the blohs for which a user is admin is counted in user blogs  
+ * Only the blogs for which a user is admin is counted in user blogs  
  *If value is set Zero,It does not change site policies 
 = Version 1.1 =
 Some Breaking and then reverting back
