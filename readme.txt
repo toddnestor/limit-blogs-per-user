@@ -1,9 +1,9 @@
 === Limit Blogs Per User ===
-Contributors: write2brajesh
+Contributors: sbrajesh
 Tags: buddypress,wpmu, options,limit blogs,user,limit
 Requires at least: 2.5+
-Tested up to: 2.8.5.2
-Stable tag: 1.0
+Tested up to: 2.9.1.1
+Stable tag: 1.2
 
 This plugin is for wpmu(wordpress Mu) and/or wpmu+buddypress based social network.It limits the number of blogs a user can create.
 == Description ==
@@ -25,33 +25,35 @@ It adds an option to the options page when you are logged in as site admin of th
 4.Go to SiteAdmin-> Options page  and navigate to the bottom,you will see an option to enter the number of blogs allowed,per 
 user.Enter some limit and click update.
 
-5.You are done!.Now it's time to for action.Enjoy the life.
+5.You are done!. Now it's time to for action.Enjoy the life.
 
 == Frequently Asked Questions ==
 
-Please leave a comment on my plugin page 
+Please leave a comment on my plugin page for support
 
-[here](http://www.thinkinginwordpress.com/2009/03/limit-number-of-blogs-per-user-for-wordpress-mu-and-buddypress-websiteblog-network/) for any questions.
+[here](http://buddydev.com/buddypress/limit-blogs-per-user-plugin-for-wpmu/) for any questions.
 
 
 
 == Screenshots ==
 Please visit 
 
-[http://www.thinkinginwordpress.com/2009/03/limit-number-of-blogs-per-user-for-wordpress-mu-and-buddypress-websiteblog-network/](http://www.thinkinginwordpress.com/2009/03/limit-number-of-blogs-per-user-for-wordpress-mu-and-buddypress-websiteblog-network/) 
+[http://buddydev.com/buddypress/limit-blogs-per-user-plugin-for-wpmu/](http://buddydev.com/buddypress/limit-blogs-per-user-plugin-for-wpmu/) 
 
 == Changelog ==
-
-Version 1.1
- *Siteadmin restriction fixed,now site admin sees only the site policy
- *Subscribers can creates new blog,the blog of which they are subscriber is not counted.
+= Version 1.2 =
+*Siteadmin restriction fixed,now site admin sees only the site policy
+ *Subscribers can creates new blog,the blog of which they are subscriber/contributor/author/editor is not counted.
+ * Only the blohs for which a user is admin is counted in user blogs  
  *If value is set Zero,It does not change site policies 
-Version 1.1.1
+= Version 1.1 =
+Some Breaking and then reverting back
+= Version 1.1.1 =
  *A silly mistake in version 1.1($wpdb was not declared global) resolved.Many thanks to Steph for pointing the issue.
 
 == Other Notes ==
 
 For any support or any questions,please leave a comment at my blog 
 
-[http://www.thinkinginwordpress.com/2009/03/limit-number-of-blogs-per-user-for-wordpress-mu-and-buddypress-websiteblog-network/](http://www.thinkinginwordpress.com/2009/03/limit-number-of-blogs-per-user-for-wordpress-mu-and-buddypress-websiteblog-network/)
-And yeh did I mention [Steph](http://blog.strategy11.com/) has been very kind in reporting bugs and suggesting fixes.Many Thanks to Steph. 
+[http://buddydev.com/buddypress/limit-blogs-per-user-plugin-for-wpmu/](http://buddydev.com/buddypress/limit-blogs-per-user-plugin-for-wpmu/)
+And yeh did I mention [Steph](http://blog.strategy11.com/) has been very kind in reporting bugs and suggesting fixes.Many Thanks to Steph.
