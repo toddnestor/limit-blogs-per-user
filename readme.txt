@@ -1,5 +1,5 @@
 === Limit Blogs Per User ===
-Contributors: sbrajesh
+Contributors:sbrajesh
 Tags: buddypress,wpmu, options,limit blogs,user,limit
 Requires at least: 2.5+
 Tested up to: 2.9.1.1
