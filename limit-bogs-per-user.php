@@ -4,8 +4,8 @@ Plugin name:Limit Blogs per User
 Plugin Author:Brajesh Singh
 Plugin URI:http://buddydev.com/buddypress/limit-blogs-per-user-plugin-for-wpmu
 Author URI:http://buddydev.com/members/sbrajesh
-Version:1.2
-Last Updated: 28th feb 2010
+Version:1.3
+Last Updated: 23rd April 2010
 License: GPL
 */
 /**
@@ -35,7 +35,7 @@ function tiw_check_current_users_blog($active_signup){
 	return "none";
 }
 /**
- * @desc Find the non subscriber/non author/non editor blogs for the user
+ * @desc Find the blogs of which user is admin
  *  It return the total number of blogs for which the user is  admin
  * @param <array> $blogs
  * @param <int> $user_id
@@ -48,9 +48,8 @@ function tiw_find_non_subscriber_blogs($user_id){
          */
         $count=0;
         foreach($blogs as $blog){
-                $user_level=get_usermeta($user_id, "wp_".$blog->userblog_id."_user_level");
-                if($user_level>=9)
-                    $count++;
+				if(bpdev_is_user_blog_admin($user_id,$blog->userblog_id))
+			        $count++;
         
             }
  
@@ -93,5 +92,24 @@ $allowed_number_of_blogs=intval($_POST["num_allowed_blogs"]);//how many blogs th
 //save to the database
 update_site_option("tiw_allowed_blogs_per_user",$allowed_number_of_blogs);//now update
 
+}
+//check if the user is blog admin
+function bpdev_is_user_blog_admin($user_id,$blog_id){
+global $wpdb;
+    $meta_key="wp_".$blog_id."_capabilities";//.."_user_level";
+	$role_sql="select user_id,meta_value from {$wpdb->usermeta} where meta_key='". $meta_key."'";
+	$role=$wpdb->get_results($wpdb->prepare($role_sql),ARRAY_A);
+	//clean the role
+	$all_user=array_map("bpdev_serialize_roles",$role);//we are unserializing the role to make that as an array
+	
+	foreach($all_user as $key=>$user_info)
+		if($user_info['meta_value']['administrator']==1&&$user_info['user_id']==$user_id)//if the role is admin
+			return true;
+	return false;
+}
+
+function bpdev_serialize_roles($roles){
+	$roles['meta_value']=maybe_unserialize($roles['meta_value']);
+return $roles;
 }
 ?>

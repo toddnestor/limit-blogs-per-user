@@ -2,8 +2,8 @@
 Contributors:sbrajesh
 Tags: buddypress,wpmu, options,limit blogs,user,limit
 Requires at least: 2.5+
-Tested up to: 2.9.1.1
-Stable tag: 1.2
+Tested up to: 2.9.2
+Stable tag: 1.3
 
 This plugin is for wpmu(wordpress Mu) and/or wpmu+buddypress based social network.It limits the number of blogs a user can create.
 == Description ==
@@ -41,8 +41,10 @@ Please visit
 [http://buddydev.com/buddypress/limit-blogs-per-user-plugin-for-wpmu/](http://buddydev.com/buddypress/limit-blogs-per-user-plugin-for-wpmu/) 
 
 == Changelog ==
+= Version 1.3 =
+ *Fixed a bug with Buddypress 1.2.3 compatibility
 = Version 1.2 =
-*Siteadmin restriction fixed,now site admin sees only the site policy
+ *Siteadmin restriction fixed,now site admin sees only the site policy
  *Subscribers can creates new blog,the blog of which they are subscriber/contributor/author/editor is not counted.
  * Only the blogs for which a user is admin is counted in user blogs  
  *If value is set Zero,It does not change site policies 
