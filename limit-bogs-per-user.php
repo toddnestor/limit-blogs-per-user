@@ -4,8 +4,8 @@ Plugin name:Limit Blogs per User
 Plugin Author:Brajesh Singh
 Plugin URI:http://buddydev.com/buddypress/limit-blogs-per-user-plugin-for-wpmu
 Author URI:http://buddydev.com/members/sbrajesh
-Version:1.3
-Last Updated: 23rd April 2010
+Version:1.3.1
+Last Updated: 2nd August 2010
 License: GPL
 */
 /**
@@ -16,12 +16,14 @@ add_filter("wpmu_active_signup","tiw_check_current_users_blog"); //send fake/tru
 add_action("wpmu_options","tiw_display_options_form"); //show the form to allow how many number of blogs per user
 add_action("update_wpmu_options","tiw_save_num_allowed_blogs");//action to save number of allowed blogs per user
 
-
+//since wp3.0 handles number of allowed blog in Idiotic ways, we need to filter on the site option which can be considered as a bad practice but wp 3.0 leaves no other option.
+add_filter("site_option_registration","tiw_check_current_users_blog");
 /**
  * @desc Check ,whether blog registration is allowed,and how many blogs per logged in user is allowed
  */
 function tiw_check_current_users_blog($active_signup){
     global $current_user;
+    
 	if( !is_user_logged_in()||is_site_admin() )
             return $active_signup;//if the user is not logged in, or is site admin, do not change the site policies
 
@@ -33,6 +35,7 @@ function tiw_check_current_users_blog($active_signup){
 			return $active_signup;
 	else
 	return "none";
+       
 }
 /**
  * @desc Find the blogs of which user is admin
@@ -46,6 +49,7 @@ function tiw_find_non_subscriber_blogs($user_id){
         /**
          * Subscribers have user level 0, so that is not entered in the user meta, author:2, editor:7,Admin:10
          */
+       
         $count=0;
         foreach($blogs as $blog){
 				if(bpdev_is_user_blog_admin($user_id,$blog->userblog_id))
@@ -100,7 +104,7 @@ global $wpdb;
 	$role_sql="select user_id,meta_value from {$wpdb->usermeta} where meta_key='". $meta_key."'";
 	$role=$wpdb->get_results($wpdb->prepare($role_sql),ARRAY_A);
 	//clean the role
-	$all_user=array_map("bpdev_serialize_roles",$role);//we are unserializing the role to make that as an array
+	$all_user=array_map("tiw_serialize_roles",$role);//we are unserializing the role to make that as an array
 	
 	foreach($all_user as $key=>$user_info)
 		if($user_info['meta_value']['administrator']==1&&$user_info['user_id']==$user_id)//if the role is admin
@@ -108,7 +112,7 @@ global $wpdb;
 	return false;
 }
 
-function bpdev_serialize_roles($roles){
+function tiw_serialize_roles($roles){
 	$roles['meta_value']=maybe_unserialize($roles['meta_value']);
 return $roles;
 }

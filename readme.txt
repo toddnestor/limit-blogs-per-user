@@ -1,11 +1,11 @@
 === Limit Blogs Per User ===
 Contributors:sbrajesh
-Tags: buddypress,wpmu, options,limit blogs,user,limit
+Tags: buddypress,wpmu,multisite,wpms, options,limit blogs,user,limit
 Requires at least: 2.5+
-Tested up to: 2.9.2
-Stable tag: 1.3
+Tested up to: 3.0
+Stable tag: 1.3.1
 
-This plugin is for wpmu(wordpress Mu) and/or wpmu+buddypress based social network.It limits the number of blogs a user can create.
+This plugin is for wpmu(Now wordpress 3.0 Multisite) and/or wpmu(wpms 3.0)+buddypress based social network.It limits the number of blogs a user can create.
 == Description ==
 
 This is a plugin for wpmu/wpmu+byddypress powered websites,where site administrators can limit the number of blogs a user can signup.
@@ -41,6 +41,8 @@ Please visit
 [http://buddydev.com/buddypress/limit-blogs-per-user-plugin-for-wpmu/](http://buddydev.com/buddypress/limit-blogs-per-user-plugin-for-wpmu/) 
 
 == Changelog ==
+= Version 1.3 =
+ *updated to work with wordpress 3.0 multisite
 = Version 1.3 =
  *Fixed a bug with Buddypress 1.2.3 compatibility
 = Version 1.2 =
