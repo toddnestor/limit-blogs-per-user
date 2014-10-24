@@ -1,3 +1,9 @@
+I am Todd Nestor and I altered the Limit Blogs Per User plugin to work with WordPress 4.0.
+
+Feel free to use it.
+
+
+EVERYTHING BELOW IS THE ORIGINAL README FROM THE LIMIT BLOGS PER USER PLUGIN
 === Limit Blogs Per User ===
 Contributors:sbrajesh
 Tags: buddypress,wpmu,multisite,wpms, options,limit blogs,user,limit

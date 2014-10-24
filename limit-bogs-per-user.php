@@ -107,9 +107,9 @@ function is_user_blog_admin($user_id,$blog_id){
     global $wpdb;
        
         $meta_key=$wpdb->prefix.$blog_id.'_capabilities';//.."_user_level";
-	$role_sql="SELECT user_id,meta_value FROM {$wpdb->usermeta} WHERE meta_key='". $meta_key."'";
+	$role_sql="SELECT user_id,meta_value FROM {$wpdb->usermeta} WHERE meta_key=%s";
 	
-        $role=$wpdb->get_results($wpdb->prepare($role_sql),ARRAY_A);
+        $role=$wpdb->get_results($wpdb->prepare($role_sql, $meta_key),ARRAY_A);
 	//clean the role
 	$all_user=array_map(array('BPDevLimitBlogsPerUser','serialize_roles'),$role);//we are unserializing the role to make that as an array
 	
